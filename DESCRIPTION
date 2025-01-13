@@ -1,0 +1,15 @@
+Package: pdbR
+Title: Fetch and Visualize PDB Structures in R
+Version: 0.1.0
+Authors@R: c(person("Rohan Nath", email = "rohann20@iiserbpr.ac.in", role = c("aut", "cre")))
+Description: Tools to fetch and visualize PDB structures using R. Includes functions for downloading, parsing, and visualizing protein structures.
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+Depends: R (>= 4.0.0)
+Imports: bio3d, rgl, httr
+Suggests: 
+    knitr,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
