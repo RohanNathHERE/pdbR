@@ -7,7 +7,7 @@
 visualize_pdb(pdb_path)
 }
 \arguments{
-\item{pdb_path}{Path to the PDF file.}
+\item{pdb_path}{Path to the PDB file.}
 }
 \description{
 Displays a 3D interactive plot of the PDB structure.

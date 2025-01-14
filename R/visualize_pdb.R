@@ -1,15 +1,30 @@
 #' Visualize PDB Structure in 3D
 #'
 #' Displays a 3D interactive plot of the PDB structure.
-#' @param pdb_path Path to the PDF file.
+#' @param pdb_path Path to the PDB file.
 #' @export
 
 visualize_pdb <- function(pdb_path) {
   library(bio3d)
 
+  # Ensure file exists
+  if (!file.exists(pdb_path)) {
+    stop("The specified PDB file does not exist.")
+  }
+
   # Read PDB file
   pdb <- read.pdb(pdb_path)
 
-  # 3D visualization using bio3d
-  plot(pdb, type = "1", col = "blue", main = "3D PDB Structure")
+  # 2D visualization (basic plot)
+  plot(pdb, type = "l", col = "blue", main = "2D PDB Structure Plot")
+
+  # Interactive 3D visualization (optional enhancement)
+  if (requireNamespace("r3dmol", quietly = TRUE)) {
+    r3dmol::r3dmol() %>%
+      r3dmol::add_model(pdb_path) %>%
+      r3dmol::set_style(style = r3dmol::style_cartoon(color = "spectrum")) %>%
+      r3dmol::zoom_to()
+  } else {
+    message("For interactive 3D visualization, install the 'r3dmol' package.")
+  }
 }
